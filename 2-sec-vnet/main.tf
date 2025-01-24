@@ -32,7 +32,7 @@ variable "sec_resource_group_name" {
 
 variable "location" {
   type    = string
-  default = "eastus"
+  default = "northeurope"
 }
 
 variable "vnet_cidr_range" {
@@ -159,6 +159,7 @@ resource "local_file" "windows" {
   filename = "${path.module}/windows-next-step.txt"
   content  = <<EOF
 $env:TF_VAR_sec_vnet_id="${module.vnet-sec.vnet_id}"
+
 
 $env:TF_VAR_sec_vnet_name="${module.vnet-sec.vnet_name}"
 $env:TF_VAR_sec_sub_id="${data.azurerm_subscription.current.subscription_id}"
